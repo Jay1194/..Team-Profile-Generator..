@@ -1,11 +1,23 @@
+//packages
 const inquirer = require('inquirer');
-const Employee = require('./lib/Employee');
+const fs = require('fs');
+
+// will import the exported object from generate-site.js, allowing us to use generateSite.writeFile() and generateSite.copyFile().
+const { writeFile } = require('./utils/generate-site');
+const generatePage = require('./src/page-template');
+
+//Extended classes
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-//Employee prompt
-inquirer
+ // Create an instance of the appropriate class based on the selected role
+let employee;
+
+//add a parameter that will store the project data
+const employeePrompt = () => {
+
+return inquirer
 .prompt([
     {
     type: 'text',
@@ -57,9 +69,6 @@ inquirer
 
 //Destructure name, id, email and role from the prompt object
 .then(({ name, id, email, role}) => {
-
-    // Create an instance of the appropriate class based on the selected role
-    let employee;
 
     //Manager logic
     if (role === 'Manager') {
@@ -126,8 +135,16 @@ inquirer
         })
     }
 });
+}
 
-
-
-
-
+// create html files
+employeePrompt()
+.then(employee => {
+    return generatePage(employee);
+})
+.then(pageHTML => {
+    return writeFile(pageHTML)
+})
+.catch(err => {
+    console.log(err);
+  });
