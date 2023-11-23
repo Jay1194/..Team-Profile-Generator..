@@ -12,12 +12,10 @@ inquirer
     name: 'name',
     message: "What is the employee's name? ",
     validate: nameInput => {
-        //If the condition evaluates to true, the validation has passed successfully
         if (nameInput) {
           return true;
-          //if the condition evaluates to false, the user receives a message and is prompted with the same question until an answer is received
         } else {
-          console.log('Please enter The Employees name! ');
+          console.log('Please enter the employees Name! ');
           return false;
         }
     }
@@ -27,10 +25,8 @@ inquirer
     name:'id',
     message: "What is the employee's ID number? ",
     validate: idInput => {
-        //If the condition evaluates to true, the validation has passed successfully
         if (idInput) {
           return true;
-          //if the condition evaluates to false, the user receives a message and is prompted with the same question until an answer is received
         } else {
           console.log("Please enter the employee's ID number! ");
           return false;
@@ -42,22 +38,96 @@ inquirer
     name: 'email',
     message: "What is the employee's email? ",
     validate: emailInput => {
-        //If the condition evaluates to true, the validation has passed successfully
         if (emailInput) {
           return true;
-          //if the condition evaluates to false, the user receives a message and is prompted with the same question until an answer is received
         } else {
-          console.log("Please enter the employee's email! ");
+          console.log("Please enter the employee's Email! ");
           return false;
         }
        }
-    }
+},
+{
+    // choose employee role
+    type:'list',
+    name: 'role',
+    message: "What is this employee's role? ",
+    choices: ['Manager', 'Engineer', 'Intern'],
+}
 ])
 
-//Destructure name from the prompt object
-.then(({ name, id, email }) => {
-    this.employee = new Employee(name, id, email)
+//Destructure name, id, email and role from the prompt object
+.then(({ name, id, email, role}) => {
 
-    //Ensure its working
-    console.log(this.employee)
+    // Create an instance of the appropriate class based on the selected role
+    let employee;
+
+    //Manager logic
+    if (role === 'Manager') {
+        inquirer.prompt([
+            {
+                type: 'text',
+                name: 'officeNumber',
+                message: "What is the managers office number? ",
+                validate: officeNumInput => {
+                    if (officeNumInput) {
+                      return true;
+                    } else {
+                      console.log("Please enter the manager's Office Number! ");
+                      return false;
+                    }
+                }
+            }
+        ])
+        .then(({ officeNumber }) => {
+            employee = new Manager(name, id, email, officeNumber)
+            console.log(employee);
+        })
+       
+    } else if (role === 'Engineer') {
+        inquirer.prompt([
+            {
+                type: 'text',
+                name: 'github',
+                message: "What is the engineer's github username? ",
+                validate: githubInput => {
+                    if (githubInput) {
+                      return true;
+                    } else {
+                      console.log("Please enter engineer's Github Username! ");
+                      return false;
+                    }
+                }
+            }
+        ])
+        .then(({ github }) => {
+            employee = new Engineer(name, id, email, github)
+            console.log(employee);
+        })
+
+    } else if (role == 'Intern') {
+        inquirer.prompt([
+            {
+                type: 'text',
+                name: 'school',
+                message: "What school is the intern from? ",
+                validate: schoolInput => {
+                    if (schoolInput) {
+                      return true;
+                    } else {
+                      console.log("Please enter the intern's School Name! ");
+                      return false;
+                    }
+                }
+            }
+        ])
+        .then(({ school }) => {
+            employee = new Intern(name, id, email, school)
+            console.log(employee);
+        })
+    }
 });
+
+
+
+
+

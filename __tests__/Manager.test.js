@@ -1,7 +1,7 @@
 const Manager = require('../lib/Manager');
 
 test('creates Manager object', () => {
-    const manager = new Manager('Jayden', 9, 't.thomastaylort@gmail.com', 777);
+    const manager = new Manager('Jayden', 77, "jsddjd@gmail.com", 9);
 
     expect(manager.name).toEqual(expect.any(String));
     expect(manager.getOfficeNumber()).toEqual(expect.any(Number));
