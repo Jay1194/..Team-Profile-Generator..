@@ -36,39 +36,41 @@ The Team Profile Generator is a command-line application that streamlines the pr
 
 - Add Manager
 
-Name: John Doe
+  Name: John Doe
 
-Employee ID: 001
+  Employee ID: 001
 
-Email: john.doe@example.com
+  Email: john.doe@example.com
 
-Office Number: 123
+  Office Number: 123
 
 
 - Add Engineer
 
-Name: Jane Smith
+  Name: Jane Smith
 
-Employee ID: 002
+  Employee ID: 002
 
 
-Email: jane.smith@example.com
+  Email: jane.smith@example.com
 
-GitHub Username: janesmith
+  GitHub Username: janesmith
 
 - Add Intern
 
-Name: Bob Johnson
+  Name: Bob Johnson
 
-Employee ID: 003
+  Employee ID: 003
 
-Email: bob.johnson@example.com
+  Email: bob.johnson@example.com
 
-School: University of Example
-
+  School: University of Example
 
 4. Once all team members are added, the application will generate an HTML file in the output directory.
-  
+   
+## Demo
+[Untitled_ Nov 24, 2023 2_12 AM.webm](https://github.com/Jay1194/Team-Profile-Generator/assets/105843570/407e92b7-9719-4dfc-a0a1-74be45f80da4)
+
 ### Technologies Used
 - Node.js
 - Inquirer npm package
