@@ -8,9 +8,7 @@ const generatePage = (employees) => {
     const employeeCards = employees.map(employee => {
     
     return `
-    <div class="container">
-      <div class="row justify-content-evenly ">
-    <div class="card text-bg-light mb-3 shadow p-3 mb-5 bg-body-tertiary rounded border border-start-0 m-1 col-3"">
+    <div class="card text-bg-light mb-3 shadow p-3 mb-5 bg-body-tertiary rounded border border-start-0 m-1 col-3">
       <div class="card-header text-bg-primary mb-3">
         <h2>${employee.name}</h2>
         <h3>${employee.getRole()}</h3>
@@ -22,6 +20,7 @@ const generatePage = (employees) => {
         <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
         ${generateEmployeeDetails(employee)}
         </ul>
+        </div>
       </div>
     </div>
   `;
@@ -47,7 +46,11 @@ return `
         </div>
       </header>
       <main> 
+      <div class="container">
+      <div class="row justify-content-evenly ">
       ${employeeCards}
+      </div>
+      </div>
     </main>
 
     <footer>

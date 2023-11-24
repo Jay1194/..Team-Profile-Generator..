@@ -105,17 +105,30 @@ const employeePrompt = async () => {
       return new Intern(name, id, email, school);
   }
 };
+// Function to initialize the application
 const init = async () => {
-  const employees = [];
-  
-  // Prompt for employee details
-  const employee = await employeePrompt();
-  console.log('Employee:', employee); // Add this line to check the employee object
-  employees.push(employee);
+  while (true) {
+    // Prompt for employee details
+    const employee = await employeePrompt();
+    employees.push(employee);
+
+    // Ask if the user wants to add another employee
+    const { addAnother } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'addAnother',
+        message: 'Do you want to add another employee?',
+        default: false,
+      }
+    ]);
+
+    if (!addAnother) {
+      break;
+    }
+  }
 
   // Generate HTML and write to file
   const pageHTML = generatePage(employees);
-  console.log('Page HTML:', pageHTML); // Add this line to check the generated HTML
   await writeFile(pageHTML);
 };
 
