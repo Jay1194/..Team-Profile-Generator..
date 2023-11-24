@@ -19,7 +19,7 @@ The Team Profile Generator is a command-line application that streamlines the pr
 - Node.js installed
 - Inquirer npm package
 
-### Installation
+## Installation
 
 1. Clone the repository
    ```bash
@@ -27,7 +27,7 @@ The Team Profile Generator is a command-line application that streamlines the pr
 2. Install
    ```bash
    npm install
-### Usage
+## Usage
 1. Open a terminal and navigate to the project directory.
 2. Run the application
    ```bash
@@ -71,7 +71,7 @@ The Team Profile Generator is a command-line application that streamlines the pr
 ## Demo
 [Untitled_ Nov 24, 2023 2_12 AM.webm](https://github.com/Jay1194/Team-Profile-Generator/assets/105843570/407e92b7-9719-4dfc-a0a1-74be45f80da4)
 
-### Technologies Used
+## Technologies Used
 - Node.js
 - Inquirer npm package
 - Jest for testing
