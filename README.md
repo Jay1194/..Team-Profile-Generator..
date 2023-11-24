@@ -75,6 +75,9 @@ The Team Profile Generator is a command-line application that streamlines the pr
 - Node.js
 - Inquirer npm package
 - Jest for testing
+- Constructors
+- Test-Driven Development (TDD)
+- Object-Oriented Programming (OOP)
 
 ## Contributing
 - Contributions are welcome! Feel free to open issues or submit pull requests.
