@@ -8,15 +8,20 @@ const generatePage = (employees) => {
     const employeeCards = employees.map(employee => {
     
     return `
-    <div class="card">
-      <div class="card-header">
+    <div class="container">
+      <div class="row justify-content-evenly ">
+    <div class="card text-bg-light mb-3 shadow p-3 mb-5 bg-body-tertiary rounded border border-start-0 m-1 col-3"">
+      <div class="card-header text-bg-primary mb-3">
         <h2>${employee.name}</h2>
         <h3>${employee.getRole()}</h3>
       </div>
       <div class="card-body">
-        <p>ID: ${employee.id}</p>
-        <p>Email: <a href="mailto:${employee.email}">${employee.email}</a></p>
+      <div class="card-text ">
+      <ul class="list-group">
+        <li class="list-group-item">ID: ${employee.id}</li>
+        <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
         ${generateEmployeeDetails(employee)}
+        </ul>
       </div>
     </div>
   `;
@@ -37,7 +42,7 @@ return `
   
     <body>
       <header>
-        <div class="text-bg-danger p-4">
+        <div class="text-bg-danger p-4 mb-4">
           <h1 class="text-center">My Team</h1>
         </div>
       </header>
@@ -58,19 +63,19 @@ const generateEmployeeDetails = (employee) => {
       if (employee instanceof Manager) {
       // Manager-specific details
       return `
-        <p>Office Number: ${employee.getOfficeNumber()}</p>
+        <li class="list-group-item" class>Office Number: ${employee.getOfficeNumber()}</li>
       `;
 
     } else if (employee instanceof Engineer) {
       // Engineer-specific details
       return `
-        <p>Github: ${employee.getGithub()}</p>
+        <li class="list-group-item">GitHub: <a href=https://github.com/${employee.getGithub()}>${employee.getGithub()}</a></li>
       `;
 
     } else if (employee instanceof Intern) {
       // Intern-specific details
       return `
-        <p>School: ${employee.getSchool()}</p>
+        <li class="list-group-item">School: ${employee.getSchool()}</li>
       `;
   };
 }
